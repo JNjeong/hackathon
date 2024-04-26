@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hackaton.hackaton.repository.CourseTakenRepository">
+    <select id="findByUserId" resultType="com.hackaton.hackaton.domain.CourseTaken">
+        select user_id "user_id", course_id "course_id", semester_id "semester_id" from tb_course_taken
+        where user_id = #{user_id}
+    </select>
+</mapper>
+

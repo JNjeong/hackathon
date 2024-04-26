@@ -13,7 +13,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8" />
         <meta
@@ -23,9 +23,9 @@
         <link
             rel="apple-touch-icon"
             sizes="76x76"
-            href="../../assets/img/apple-icon.png"
+            href="../../static/img/apple-icon.png"
         />
-        <link rel="icon" type="image/png" href="../../assets/img/favicon.png" />
+        <link rel="icon" type="image/png" href="../../static/img/favicon.png" />
         <title>
             Material Dashboard 2 by Creative Tim
         </title>
@@ -36,8 +36,8 @@
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700"
         />
         <!-- Nucleo Icons -->
-        <link href="../../assets/css/nucleo-icons.css" rel="stylesheet" />
-        <link href="../../assets/css/nucleo-svg.css" rel="stylesheet" />
+        <link href="../../static/css/nucleo-icons.css" rel="stylesheet" />
+        <link href="../../static/css/nucleo-svg.css" rel="stylesheet" />
         <!-- Font Awesome Icons -->
         <script
             src="https://kit.fontawesome.com/42d5adcbca.js"
@@ -51,7 +51,7 @@
         <!-- CSS Files -->
         <link
             id="pagestyle"
-            href="../../assets/css/material-dashboard.css?v=3.1.0"
+            href="../../static/css/material-dashboard.css?v=3.1.0"
             rel="stylesheet"
         />
         <!-- Nepcha Analytics (nepcha.com) -->
@@ -103,7 +103,7 @@
                     target="_blank"
                 >
                     <img
-                        src="../../assets/img/logo-ct.png"
+                        src="../../static/img/logo-ct.png"
                         class="navbar-brand-img h-100"
                         alt="main_logo"
                     />
@@ -232,7 +232,8 @@
             <!-- End Navbar -->
             <div class="container-fluid py-4">
                 <div class="row mt-4">
-                    <div
+                    <th:block>
+                        <div
                         class="col-lg-4 col-md-6 mt-4 mb-4"
                         OnClick="location.href ='./tables.html'"
                         style="cursor:pointer;"
@@ -255,10 +256,11 @@
                             </div>
                             <div class="card-body">
                                 <h6 class="mb-0 ">CSE 114</h6>
-                                <hr class="dark horizontal" /
+                                <hr class="dark horizontal"/>
                             </div>
                         </div>
                     </div>
+                    </th:block>
                 </div>
             </div>
         </main>
