@@ -22,7 +22,15 @@ public class UserController{
     public UserController(){}
 
     @GetMapping("login")
-    public void login(){}
+    public void login(){
+    }
+
+    @PostMapping("login")
+    public String login(long user_id, String user_pw){
+        User foundUser = userService.findById(user_id);
+        System.out.println("id : "+foundUser);
+        return "redirect:/main";
+    }
 
     @GetMapping("register")
     public void register(){}
@@ -31,6 +39,6 @@ public class UserController{
     public String registered(User user, RedirectAttributes redirectAttributes){
         //세션 User객체 저장
 
-        return "redirect:/main";
+        return "redirect:/home";
     }
 }
