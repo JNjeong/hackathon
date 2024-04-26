@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CourseService {
 
@@ -20,12 +22,16 @@ public class CourseService {
         courseRepository = sqlSession.getMapper(CourseRepository.class);
     }
 
-    public Course findByUserId(HttpServletRequest request){
-        User user = (User) request.getSession().getAttribute("user");
-
+    public List<Course> findByUserId(User user){
         if(user.getUser_type().equals("Professor")) {
-            courseRepository.findByUserId(user.getUser_id());
+           return courseRepository.findByUserId(user.getUser_id());
         }
+
+        return null;
+    }
+
+    public Course findByCourseId(long course_id){
+        return courseRepository.findByCourseId(course_id);
     }
 
 
