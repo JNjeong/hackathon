@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/user/*")
+@RequestMapping("/")
 public class UserController{
     private UserService userService;
 
@@ -21,24 +21,24 @@ public class UserController{
 
     public UserController(){}
 
-    @GetMapping("login")
+    @GetMapping("/sign-in")
     public void login(){
     }
 
-    @PostMapping("login")
+    @PostMapping("/sign-in")
     public String login(long user_id, String user_pw){
         User foundUser = userService.findById(user_id);
         System.out.println("id : "+foundUser);
-        return "redirect:/main";
+        return "redirect:/index";
     }
 
-    @GetMapping("register")
+    @GetMapping("/sign-up")
     public void register(){}
 
-    @PostMapping("register")
+    @PostMapping("/sign-up")
     public String registered(User user, RedirectAttributes redirectAttributes){
         //세션 User객체 저장
 
-        return "redirect:/home";
+        return "redirect:/index";
     }
 }
