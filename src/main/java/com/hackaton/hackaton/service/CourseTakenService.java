@@ -2,6 +2,7 @@ package com.hackaton.hackaton.service;
 
 import com.hackaton.hackaton.domain.CourseTaken;
 import com.hackaton.hackaton.repository.CourseTakenRepository;
+import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,10 +10,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class CourseTakenService {
 
-    @Autowired
-    private CourseTakenRepository courseTakenRepository;
+    private final CourseTakenRepository courseTakenRepository;
 
     @Autowired
     public CourseTakenService(SqlSession sqlSession){

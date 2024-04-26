@@ -24,7 +24,6 @@ public class UserService {
     }
 
     public int register(User user){
-        //유효성검사??
         return userRepository.save(user);
     }
 
