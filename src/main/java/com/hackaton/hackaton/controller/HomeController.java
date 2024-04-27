@@ -40,18 +40,9 @@ public class HomeController {
     }
 
     public HomeController(){}
-
-    @RequestMapping("/")
+    
     public String home(HttpServletRequest request, Model model){
-        //User user = (User) request.getSession().getAttribute("user");
-        User user = new User();
-        user.setUser_id(Long.parseLong("111164417"));
-        user.setUser_pw("1234");
-        user.setUser_name("정준홍");
-        user.setUser_email("junhong.jeong@stonybrook.edu");
-        user.setUser_type("Professor");
-        model.addAttribute("course", courseSerivce.findByUserId(user));
-        /*
+        User user = (User) request.getSession().getAttribute("user");
         if(user!=null) {
             if(user.getUser_type().equals("Professor")){
                 model.addAttribute("course", courseSerivce.findByUserId(user));
@@ -66,33 +57,28 @@ public class HomeController {
             }
             return "index";
         }
-        else return "sign-in";
-
-         */
-        return "index";
+        else return "redirect:/sign-in";
     }
 
-    @GetMapping("/sign-in")
+    @GetMapping("sign-in")
     public void signin(){}
 
-    @PostMapping("/sign-in")
+    @PostMapping("sign-in")
     public String signined(String user_id, String user_pw, HttpServletRequest request){
         User user = userService.findById(Long.parseLong(user_id));
         if (user.getUser_pw().equals(user_pw)) {
             request.getSession().setAttribute("user", user);
-            return "index";
+            return "redirect:/";
         }
-
-
 
         return "redirect:/sign-in";
     }
 
 
-    @GetMapping("/sign-up")
+    @GetMapping("sign-up")
     public void signup(){}
 
-    @PostMapping("/sign-up")
+    @PostMapping("sign-up")
     public String signuped(String user_id, String user_pw, String user_name, String user_email, String user_type, HttpServletRequest request){
         User user = new User();
         user.setUser_id(Long.parseLong((user_id)));
@@ -104,6 +90,5 @@ public class HomeController {
         request.getSession().setAttribute("user", user);
         return "index";
     }
-
 
 }
