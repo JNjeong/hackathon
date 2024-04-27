@@ -95,7 +95,7 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("table")
+    @GetMapping("tables")
     public String table(@RequestParam("course_id") long course_id, Model model){
         List<User> users = new ArrayList<User>();
         List<CourseTaken> courseTakens = courseTakenService.findByCourseId(course_id);
@@ -103,7 +103,8 @@ public class HomeController {
             users.add(userService.findById(courseTaken.getUser_id()));
         }
         model.addAttribute("students", users);
-        return "profile";
+        model.addAttribute("courseName", courseService.findByCourseId(course_id).getCourse_name());
+        return "tables";
     }
 
     @GetMapping("profile")

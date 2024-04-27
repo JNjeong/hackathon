@@ -224,7 +224,7 @@
         <div class="row mt-4">
             <th:block th:each="course:${courses}">
                 <a
-                        th:href="@{/table(course_id=*{course.course_id})}"
+                        th:href="@{/tables(course_id=*{course.course_id})}"
                         class="col-lg-4 col-md-6 mt-4 mb-4"
                         style="cursor:pointer;"
                         id="container"
