@@ -5,5 +5,9 @@
         select user_id "user_id", user_name "user_name", user_pw "user_pw", user_email "user_email", user_type "user_type" from tb_user
         where user_id = #{user_id}
     </select>
+    <insert id="save">
+        INSERT INTO tb_user (user_id, user_pw, user_name, user_email, user_type)
+        VALUES (#{user_id}, #{user_pw}, #{user_name}, #{user_email}, #{user_type});
+    </insert>
 </mapper>
 
