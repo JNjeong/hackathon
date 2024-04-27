@@ -23,4 +23,8 @@ public class CourseTakenService {
     public List<CourseTaken> findByUserId(long user_id){
         return courseTakenRepository.findByUserId(user_id);
     }
+
+    public List<CourseTaken> findByCourseId(long course_id){
+        return courseTakenRepository.findByCourseId(course_id);
+    }
 }
