@@ -2,9 +2,11 @@ package com.hackaton.hackaton.controller;
 
 import com.hackaton.hackaton.domain.Course;
 import com.hackaton.hackaton.domain.CourseTaken;
+import com.hackaton.hackaton.domain.Grade;
 import com.hackaton.hackaton.domain.User;
 import com.hackaton.hackaton.service.CourseService;
 import com.hackaton.hackaton.service.CourseTakenService;
+import com.hackaton.hackaton.service.GradeService;
 import com.hackaton.hackaton.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,7 @@ public class HomeController {
     UserService userService;
     CourseService courseService;
     CourseTakenService courseTakenService;
+    GradeService gradeService;
 
     @Autowired
     public void setUserService(UserService userService){
@@ -38,6 +41,11 @@ public class HomeController {
     @Autowired
     public void setCourseTakenService(CourseTakenService courseTakenService){
         this.courseTakenService = courseTakenService;
+    }
+
+    @Autowired
+    public void setGradeService(GradeService gradeService){
+        this.gradeService = gradeService;
     }
 
     public HomeController(){}
@@ -108,6 +116,80 @@ public class HomeController {
     }
 
     @GetMapping("profile")
-    public void profile(){}
+    public String profile(@RequestParam("user_id") long user_id, Model model){
+        model.addAttribute("userName", userService.findById(user_id));
+        return "redirect:/profile";
+    }
+
+    @GetMapping("dashboard")
+    public String dashboard(@RequestParam("user_id") long user_id, @RequestParam("course_id") long course_id, Model model){
+        String msg = "Hello, "+userService.findById(user_id).getUser_name()+". This is what you have achieved so far. Here are achievable goals.\n";
+
+        List<Grade> grades = gradeService.findAllByUserId(user_id, course_id);
+        List<Long> Assignments = new ArrayList<Long>();
+        long AssCnt = 0;
+        long AssSum = 0;
+        List<Long> Attendances = new ArrayList<Long>();
+        long AttCnt = 0;
+        long AttSum = 0;
+        List<Long> Quizs = new ArrayList<Long>();
+        long QuizCnt = 0;
+        long QuizSum = 0;
+        List<Long> Exams = new ArrayList<Long>();
+        int ExamCnt = 0;
+        int ExamSum = 0;
+        for(Grade grade : grades){
+            String des = grade.getGrade_type();
+            long val = grade.getGrade_value();
+
+            if (50 > val) msg = msg.concat(grade.getGrade_description()+" failed. you need more effort on this.\n");
+            if (60 <= val && val < 70)  msg = msg.concat(grade.getGrade_description()+" barely passed. You might want more study.\n");
+            if (70 <= val && val < 80) msg = msg.concat(grade.getGrade_description()+" needs little more effort. You are on the way!\n");
+
+            if (des.equals("Assignment")) {
+                AssCnt++;
+                AssSum += val;
+                Assignments.add(val);
+            }
+            else if (des.equals("Attendance")) {
+                AttCnt++;
+                AttSum += val;
+                Attendances.add(val);
+            }
+            else if (des.equals("quiz")) {
+                QuizCnt++;
+                QuizSum += val;
+                Quizs.add(val);
+            }
+            else if (des.equals("exam")) {
+                ExamCnt++;
+                ExamSum += val;
+                Exams.add(val);
+            }
+
+        }
+        msg=msg.concat("Otherwise You are doing GREAT!");
+
+        model.addAttribute("aiMessage", msg);
+
+        model.addAttribute("assignments", Assignments);
+        model.addAttribute("assignmentTotal", AssSum);
+        model.addAttribute("assignmentCount", AssCnt);
+        model.addAttribute("assignmentAverage", AssSum/AssCnt);
+        model.addAttribute("attendances", Attendances);
+        model.addAttribute("attendanceTotal", AttSum);
+        model.addAttribute("attendanceCount", AttCnt);
+        model.addAttribute("attendanceAverage", AttSum/AttCnt);
+        model.addAttribute("quizs", Quizs);
+        model.addAttribute("quizTotal", QuizSum);
+        model.addAttribute("quizCount", QuizSum);
+        model.addAttribute("quizAverage", QuizSum/QuizCnt);
+        model.addAttribute("exams", Exams);
+        model.addAttribute("examTotal", ExamSum);
+        model.addAttribute("examCnt", ExamCnt);
+        model.addAttribute("examAverage", ExamSum/ExamCnt);
+
+        return "redirect:/dashboard";
+    }
 
 }
