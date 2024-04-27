@@ -91,17 +91,19 @@
         id="sidenav-main"
 >
     <div>
+        <a
+                class="navbar-brand m-0"
+                target="_blank"
+        >
         <img
                 src="/img/logo-ct.png"
                 class="navbar-brand-img h-100"
                 alt="main_logo"
         />
-        <span class="ms-1 font-weight-bold text-white"
-        >Material Dashboard 2</span
+            <span class="ms-1 font-weight-bold text-white" style="font-size: large"
+            >CheckMate</span
         >
-    </div>
-
-    </a>
+        </a>
     </div>
     <hr class="horizontal light mt-0 mb-2" />
     <div
@@ -112,7 +114,7 @@
             <li class="nav-item">
                 <a
                         class="nav-link text-white active bg-gradient-primary"
-                        href="../views/index.html"
+                        href="#"
                 >
                     <div
                             class="text-white text-center me-2 d-flex align-items-center justify-content-center"
@@ -134,20 +136,6 @@
             <li class="nav-item">
                 <a
                         class="nav-link text-white "
-                        href="../views/sign-in.html"
-                >
-                    <div
-                            class="text-white text-center me-2 d-flex align-items-center justify-content-center"
-                    >
-                        <i class="material-icons opacity-10">login</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Sign In</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a
-                        class="nav-link text-white "
-                        href="../views/sign-up.html"
                 >
                     <div
                             class="text-white text-center me-2 d-flex align-items-center justify-content-center"
@@ -156,7 +144,19 @@
                         >assignment</i
                         >
                     </div>
-                    <span class="nav-link-text ms-1">Sign Up</span>
+                    <span class="nav-link-text ms-1">My Page</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a
+                        class="nav-link text-white "
+                >
+                    <div
+                            class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+                    >
+                        <i class="material-icons opacity-10">logout</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Sign Out</span>
                 </a>
             </li>
         </ul>
@@ -206,12 +206,11 @@
                 <ul class="navbar-nav  justify-content-end" id="sign_container">
                     <li class="nav-item d-flex align-items-center">
                         <a
-                                href="sign-in"
                                 class="nav-link text-body font-weight-bold px-0"
                         >
                             <i class="fa fa-user me-sm-1"></i>
                             <span class="d-sm-inline d-none"
-                            >Sign In</span
+                            >Sign Out</span
                             >
                         </a>
                     </li>
