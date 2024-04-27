@@ -1,14 +1,13 @@
 package com.hackaton.hackaton.repository;
 
 
-import com.hackaton.hackaton.domain.User;
+import com.hackaton.hackaton.domain.Grade;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface GradeRepository {
-    User findById(long id);
+    List<Grade> findAllByUserId(long user_id, long course_id);
 
-    int save(User user);
-
-    int delete(long id);
 }

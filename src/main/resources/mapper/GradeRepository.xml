@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hackaton.hackaton.repository.GradeRepository">
-    <select id="findById" resultType="com.hackaton.hackaton.domain.User">
-        select user_id "user_id", user_name "user_name", user_pw "user_pw", user_email "user_email", user_type "user_type" from tb_user
-        where user_id = #{user_id}
+    <select id="findAllByUserId" resultType="com.hackaton.hackaton.domain.Grade">
+        select grade_id "grade_id", user_id "user_id", course_id "course_id", grade_value "grade_value", grade_type "grade_type", grade_description "grade_description", grade_feedback "grade_feedback" from tb_grade
+        where user_id = #{user_id} and course_id = #{course_id}
     </select>
 </mapper>
 
