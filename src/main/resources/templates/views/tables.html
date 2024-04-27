@@ -209,12 +209,12 @@
                             <li
                                 class="breadcrumb-item text-sm text-dark active"
                                 aria-current="page"
-                                th:text="*{courseName}"
                             >
                                 Students
                             </li>
                         </ol>
-                        <h6 class="font-weight-bolder mb-0">Students</h6>
+                        <h6     th:text="*{courseName}"
+                                class="font-weight-bolder mb-0">Students</h6>
                     </nav>
                     <div
                         class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
@@ -283,8 +283,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <th:block th:each="student:${students}">
                                             <tr
-                                                OnClick="location.href ='./profile.html'"
+                                                th:href="@{/profile(user_id=*{student.user_id})}"
                                                 style="cursor:pointer;"
                                             >
                                                 <td>
@@ -292,6 +293,7 @@
                                                         class="d-flex px-2 py-1"
                                                     >
                                                         <div
+                                                            th:text="*{student.user_name}"
                                                             class="d-flex flex-column justify-content-center"
                                                         >
                                                             <h6
@@ -304,6 +306,7 @@
                                                 </td>
                                                 <td>
                                                     <p
+                                                        th:text="*{student.user_email}"
                                                         class="text-xs font-weight-bold mb-0"
                                                     >
                                                         Dongyeong.Kim@stonybrook.edu
@@ -313,6 +316,7 @@
                                                     class="align-left text-left text-sm"
                                                 >
                                                     <span
+                                                        th:text="*{student.user_id}"
                                                         class="text-xs font-weight-bold mb-0"
                                                         >116392149</span
                                                     >
