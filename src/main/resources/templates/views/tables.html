@@ -285,11 +285,12 @@
                                         <tbody>
                                         <th:block th:each="student:${students}">
                                             <tr
-                                                th:href="@{/profile(user_id=*{student.user_id})}"
                                                 style="cursor:pointer;"
                                             >
                                                 <td>
-                                                    <div
+                                                    <a th:href="@{/profile(user_id=*{student.user_id})}"
+                                                    >
+                                                        <div
                                                         class="d-flex px-2 py-1"
                                                     >
                                                         <div
@@ -303,6 +304,7 @@
                                                             </h6>
                                                         </div>
                                                     </div>
+                                                    </a>
                                                 </td>
                                                 <td>
                                                     <p

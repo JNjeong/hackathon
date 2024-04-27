@@ -118,7 +118,7 @@ public class HomeController {
     @GetMapping("profile")
     public String profile(@RequestParam("user_id") long user_id, Model model){
         model.addAttribute("userName", userService.findById(user_id));
-        return "redirect:/profile";
+        return "profile";
     }
 
     @GetMapping("dashboard")
@@ -189,7 +189,7 @@ public class HomeController {
         model.addAttribute("examCnt", ExamCnt);
         model.addAttribute("examAverage", ExamSum/ExamCnt);
 
-        return "redirect:/dashboard";
+        return "dashboard";
     }
 
 }
