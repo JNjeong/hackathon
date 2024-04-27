@@ -9,6 +9,5 @@
         select user_id "user_id", course_id "course_id", semester_id "semester_id" from tb_course_taken
         where course_id = #{course_id}
     </select>
-
 </mapper>
 
