@@ -9,5 +9,6 @@
         select course_id "course_id", course_name "course_name", user_id "user_id" from tb_course
         where course_id = #{course_id}
     </select>
+
 </mapper>
 
