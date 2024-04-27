@@ -122,10 +122,12 @@ public class HomeController {
     }
 
     @GetMapping("dashboard")
-    public String dashboard(@RequestParam("user_id") long user_id, @RequestParam("course_id") long course_id, Model model){
-        String msg = "Hello, "+userService.findById(user_id).getUser_name()+". This is what you have achieved so far. Here are achievable goals.\n";
+    public String dashboard(@RequestParam("course_id") long course_id, Model model, HttpSession session){
+        User user = (User) session.getAttribute("user");
 
-        List<Grade> grades = gradeService.findAllByUserId(user_id, course_id);
+        String msg = "Hello, "+userService.findById(user.getUser_id()).getUser_name()+". This is what you have achieved so far. Here are achievable goals.\n";
+
+        List<Grade> grades = gradeService.findAllByUserId(user.getUser_id(), course_id);
         List<Long> Assignments = new ArrayList<Long>();
         long AssCnt = 0;
         long AssSum = 0;
