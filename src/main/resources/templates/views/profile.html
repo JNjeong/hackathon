@@ -28,7 +28,7 @@
         />
         <link rel="icon" type="image/png" href="img/favicon.png" />
         <title>
-            Material Dashboard 2 by Creative Tim
+            CheckMate Dashboard
         </title>
         <!--     Fonts and icons     -->
         <link
@@ -204,11 +204,11 @@
                             class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5"
                         >
                             <li class="breadcrumb-item text-sm">
-                                <a
+                                <div
                                     class="opacity-5 text-dark"
-                                    href="javascript:;"
-                                    >Pages</a
-                                >
+                                    th:text="*{user.user_name}"
+                                    >Pages
+                                </div>
                             </li>
                             <li
                                 class="breadcrumb-item text-sm text-dark active"
@@ -237,10 +237,12 @@
                     <div class="row gx-4 mb-2">
                         <div class="col-auto my-auto">
                             <div class="h-100">
-                                <h5 class="mb-1">
+                                <h5 th:text="*{user.user_name}"
+                                    class="mb-1">
                                     Dongyeong Kim
                                 </h5>
-                                <p class="mb-0 font-weight-normal text-sm">
+                                <p  th:text="*{user.user_id}"
+                                    class="mb-0 font-weight-normal text-sm">
                                     116392149
                                 </p>
                             </div>

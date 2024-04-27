@@ -117,7 +117,7 @@ public class HomeController {
 
     @GetMapping("profile")
     public String profile(@RequestParam("user_id") long user_id, Model model){
-        model.addAttribute("userName", userService.findById(user_id));
+        model.addAttribute("user", userService.findById(user_id));
         return "profile";
     }
 
