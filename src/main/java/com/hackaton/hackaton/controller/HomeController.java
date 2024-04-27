@@ -22,7 +22,7 @@ import java.util.List;
 @RequestMapping("/")
 public class HomeController {
     UserService userService;
-    CourseService courseSerivce;
+    CourseService courseService;
     CourseTakenService courseTakenService;
 
     @Autowired
@@ -31,8 +31,8 @@ public class HomeController {
     }
 
     @Autowired
-    public void setCourseSerivce(CourseService courseSerivce){
-        this.courseSerivce = courseSerivce;
+    public void setCourseService(CourseService courseService){
+        this.courseService = courseService;
     }
 
     @Autowired
@@ -47,15 +47,17 @@ public class HomeController {
         User user = (User) session.getAttribute("user");
         if(user!=null) {
             if(user.getUser_type().equals("Professor")){
-                model.addAttribute("course", courseSerivce.findByUserId(user));
+                // 교수가 가르치고 있는 course 정보를 담음
+                model.addAttribute("courses", courseService.findByUserId(user));
             }
             else if (user.getUser_type().equals("Student")){
                 List<Course> courses = new ArrayList<Course>();
                 List<CourseTaken> courseTakens = courseTakenService.findByUserId(user.getUser_id());
                 for (CourseTaken courseTaken : courseTakens) {
-                    courses.add(courseSerivce.findByCourseId(courseTaken.getCourse_id()));
+                    courses.add(courseService.findByCourseId(courseTaken.getCourse_id()));
                 }
-                model.addAttribute("courseTaken", courses);
+                // courseTaken 정보로 학생이 듣고 있는 course들을 담아줌
+                model.addAttribute("courses", courses);
             }
             return "index";
         }
