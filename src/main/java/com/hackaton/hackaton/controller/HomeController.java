@@ -7,6 +7,7 @@ import com.hackaton.hackaton.service.CourseService;
 import com.hackaton.hackaton.service.CourseTakenService;
 import com.hackaton.hackaton.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,14 +24,33 @@ public class HomeController {
     CourseService courseSerivce;
     CourseTakenService courseTakenService;
 
-    public HomeController(){}
+    @Autowired
+    public void setUserService(UserService userService){
+        this.userService = userService;
+    }
 
-    User user;
+    @Autowired
+    public void setCourseSerivce(CourseService courseSerivce){
+        this.courseSerivce = courseSerivce;
+    }
+
+    @Autowired
+    public void setCourseTakenService(CourseTakenService courseTakenService){
+        this.courseTakenService = courseTakenService;
+    }
+
+    public HomeController(){}
 
     @RequestMapping("/")
     public String home(HttpServletRequest request, Model model){
-        user = (User) request.getSession().getAttribute("user");
-
+        //User user = (User) request.getSession().getAttribute("user");
+        User user = new User();
+        user.setUser_id(Long.parseLong("111164417"));
+        user.setUser_pw("1234");
+        user.setUser_name("정준홍");
+        user.setUser_email("junhong.jeong@stonybrook.edu");
+        user.setUser_type("Professor");
+        model.addAttribute("course", courseSerivce.findByUserId(user));
         /*
         if(user!=null) {
             if(user.getUser_type().equals("Professor")){
@@ -62,6 +82,9 @@ public class HomeController {
             request.getSession().setAttribute("user", user);
             return "index";
         }
+
+
+
         return "redirect:/sign-in";
     }
 
