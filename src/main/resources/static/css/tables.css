@@ -1,0 +1,39 @@
+.add-student {
+    display: flex;
+    justify-content: space-between; /* Aligns children to the start and end of the container */
+    align-items: center; /* Aligns children vertically in the center */
+}
+
+.text-white {
+    color: white;
+}
+
+.ps-3 {
+    padding-left: 1rem; /* Ensure text has padding on the left */
+}
+
+.gradient-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    background: linear-gradient(195deg, #EC407A 0%, #D81B60 100%);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.gradient-button:hover {
+    background: linear-gradient(195deg, #D81B60 0%, #EC407A 100%);
+}
+
+.gradient-button:active {
+    transform: scale(0.98); /* Slightly scale down the button when clicked */
+}
+
+.delete {
+    color: red!important;
+}
