@@ -54,6 +54,7 @@
             href="../../static/css/material-dashboard.css?v=3.1.0"
             rel="stylesheet"
         />
+        <link href="../../static/css/tables.css" rel="stylesheet" />
         <!-- Nepcha Analytics (nepcha.com) -->
         <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
         <script
@@ -119,7 +120,7 @@
                     <li class="nav-item">
                         <a
                             class="nav-link text-white "
-                            href="../views/index.html"
+                            href="/index"
                         >
                             <div
                                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
@@ -134,7 +135,7 @@
                     <li class="nav-item">
                         <a
                             class="nav-link text-white active bg-gradient-primary"
-                            href="../views/tables.html"
+                            href="/tables"
                         >
                             <div
                                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
@@ -156,14 +157,14 @@
                     <li class="nav-item">
                         <a
                             class="nav-link text-white "
-                            href="../views/sign-in.html"
+                            href="/sign-out"
                         >
                             <div
                                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
                             >
-                                <i class="material-icons opacity-10">login</i>
+                                <i class="material-icons opacity-10">logout</i>
                             </div>
-                            <span class="nav-link-text ms-1">Sign In</span>
+                            <span class="nav-link-text ms-1">Sign Out</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -241,13 +242,16 @@
                                 class="card-header p-0 position-relative mt-n4 mx-3 z-index-2"
                             >
                                 <div
-                                    class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
+                                    class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 add-student"
                                 >
                                     <h6 class="text-white text-capitalize ps-3">
                                         Students
                                     </h6>
+                                    <h6 class="text-white pe-3 text-capitalize">
+                                        <button class="gradient-button">Add Student</button>
+                                    </h6>
                                 </div>
-                                <div></div>
+
                             </div>
                             <div class="card-body px-0 pb-2">
                                 <div class="table-responsive p-0">
@@ -262,19 +266,15 @@
                                                     Name
                                                 </th>
                                                 <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" style="width: 300px" ;
+
+                                                >
+                                                    Email
+                                                </th>
+                                                <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
                                                 >
-                                                    Function
-                                                </th>
-                                                <th
-                                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                                                >
-                                                    Status
-                                                </th>
-                                                <th
-                                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                                                >
-                                                    Employed
+                                                    ID
                                                 </th>
                                                 <th
                                                     class="text-secondary opacity-7"
@@ -298,11 +298,6 @@
                                                             >
                                                                 Dongyeong Kim
                                                             </h6>
-                                                            <p
-                                                                class="text-xs text-secondary mb-0"
-                                                            >
-                                                                Dongyeong.Kim@stonybrook.edu
-                                                            </p>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -310,34 +305,24 @@
                                                     <p
                                                         class="text-xs font-weight-bold mb-0"
                                                     >
-                                                        Manager
-                                                    </p>
-                                                    <p
-                                                        class="text-xs text-secondary mb-0"
-                                                    >
-                                                        Organization
+                                                        Dongyeong.Kim@stonybrook.edu
                                                     </p>
                                                 </td>
                                                 <td
-                                                    class="align-middle text-center text-sm"
+                                                    class="align-left text-left text-sm"
                                                 >
                                                     <span
-                                                        class="badge badge-sm bg-gradient-success"
-                                                        >Online</span
+                                                        class="text-xs font-weight-bold mb-0"
+                                                        >116392149</span
                                                     >
                                                 </td>
                                                 <td
-                                                    class="align-middle text-center"
+                                                        class="align-middle text-center"
                                                 >
                                                     <span
-                                                        class="text-secondary text-xs font-weight-bold"
-                                                        >23/04/18</span
+                                                            class="text-secondary text-xs font-weight-bold delete"
+                                                    >DELETE</span
                                                     >
-                                                </td>
-                                                <td class="align-middle">
-                                                    <span
-                                                        class="text-secondary text-xs font-weight-bold"
-                                                    ></span>
                                                 </td>
                                             </tr>
                                         </tbody>

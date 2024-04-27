@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to update hidden input based on the selected radio button
     function updateUserType() {
         if (radioStudent.checked) {
-            userTypeHiddenInput.value = "student";
+            userTypeHiddenInput.value = "Student";
         } else if (radioProfessor.checked) {
-            userTypeHiddenInput.value = "professor";
+            userTypeHiddenInput.value = "Professor";
         }
     }
 

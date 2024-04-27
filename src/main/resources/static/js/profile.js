@@ -1,41 +1,28 @@
-const assignments = document.getElementById("assignments");
 const exams = document.getElementById("exams");
 const quizzes = document.getElementById("quizzes");
 const attendance = document.getElementById("attendance");
+const container = document.getElementById("list");
 
-assignments.addEventListener("click", () => {
-    fetch("https://jsonplaceholder.typicode.com/todos/1")
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            let count = 1;
-            data.forEach((element) => {
-                let assignmentList = `
-                <div class="card card-plain h-100" id="assignment${count}">
+document.getElementById('assignments').addEventListener('click', function() {
+    const container = document.getElementById('cardContainer');
+    container.innerHTML = ''; // Clear previous content if any
+
+    for (let i = 1; i <= 5; i++) {
+        const cardHTML = `
+            <div class="card card-plain h-100" id="exam${i}">
                 <div class="card-body p-3">
                     <ul class="list-group">
-                        <li
-                            class="list-group-item border-0 d-flex align-items-center px-0 mb-2 pt-0"
-                        >
-                            <div
-                                class="d-flex align-items-start flex-column justify-content-center"
-                            >
-                                <h4
-                                    class="mb-2 btn btn-light"
-                                    type="button"
-                                >
-                                    Assignment ${count}
-                                </h4>
+                        <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2 pt-0">
+                            <div class="d-flex align-items-start flex-column justify-content-center">
+                                <h4 class="mb-2 btn btn-light" type="button">Exam ${i}</h4>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
-                `;
-                $("#list").append(assignmentList);
-                count++;
-            });
-        });
+        `;
+        container.insertAdjacentHTML('beforeend', cardHTML);
+    }
 });
 
 exams.addEventListener("click", () => {
